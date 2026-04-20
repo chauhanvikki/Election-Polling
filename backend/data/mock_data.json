@@ -1,0 +1,48 @@
+{
+  "factors": [
+    { "id": "incumbency", "name": "Incumbency Effect", "weight": 1.5 },
+    { "id": "party_strength", "name": "Party Strength", "weight": 1.2 },
+    { "id": "past_work", "name": "Past Work (OSINT)", "weight": 1.4 },
+    { "id": "personal_base", "name": "Personal Base", "weight": 1.3 },
+    { "id": "demographic_base", "name": "Religious/Caste Base", "weight": 1.6 },
+    { "id": "digital_sentiment", "name": "Digital Sentiment", "weight": 1.0 }
+  ],
+  "candidates": [
+    {
+      "id": "cand_a",
+      "name": "Candidate A (Incumbent)",
+      "scores": {
+        "incumbency": { "value": 2, "label": "High (Anti-incumbency)" },
+        "party_strength": { "value": 8, "label": "Strong National Presence" },
+        "past_work": { "value": 7, "label": "Verified Dev. Projects" },
+        "personal_base": { "value": 6, "label": "Traditional Loyalists" },
+        "demographic_base": { "value": 5, "label": "Split Support" },
+        "digital_sentiment": { "value": 4, "label": "Neutral/Negative" }
+      }
+    },
+    {
+      "id": "cand_b",
+      "name": "Candidate B (Challenger)",
+      "scores": {
+        "incumbency": { "value": 5, "label": "N/A (Neutral)" },
+        "party_strength": { "value": 7, "label": "Regional Powerhouse" },
+        "past_work": { "value": 8, "label": "High Social Activism" },
+        "personal_base": { "value": 8, "label": "Youth/Urban Appeal" },
+        "demographic_base": { "value": 9, "label": "Solidified Block" },
+        "digital_sentiment": { "value": 9, "label": "Highly Positive" }
+      }
+    },
+    {
+      "id": "cand_c",
+      "name": "Candidate C (Independent)",
+      "scores": {
+        "incumbency": { "value": 5, "label": "N/A (Neutral)" },
+        "party_strength": { "value": 3, "label": "Weak / Local Only" },
+        "past_work": { "value": 2, "label": "Limited Record" },
+        "personal_base": { "value": 7, "label": "Hyper-Local Community" },
+        "demographic_base": { "value": 4, "label": "Minority Niche" },
+        "digital_sentiment": { "value": 2, "label": "Low Visibility" }
+      }
+    }
+  ]
+}
