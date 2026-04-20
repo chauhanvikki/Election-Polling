@@ -7,9 +7,10 @@ const ConstituencyOverview = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
         const [cRes, hRes] = await Promise.all([
-          fetch('http://localhost:5000/api/constituency'),
-          fetch('http://localhost:5000/api/historical')
+          fetch(`${API_URL}/api/constituency`),
+          fetch(`${API_URL}/api/historical`)
         ]);
         const cData = await cRes.json();
         const hData = await hRes.json();

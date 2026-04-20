@@ -6,6 +6,8 @@ export const useData = () => {
   return useContext(DataContext);
 };
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [factors, setFactors] = useState([]);
@@ -17,8 +19,8 @@ export const DataProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const [powRes, factorsRes] = await Promise.all([
-          fetch('http://localhost:5000/api/pow'),
-          fetch('http://localhost:5000/api/factors')
+          fetch(`${API_URL}/api/pow`),
+          fetch(`${API_URL}/api/factors`)
         ]);
 
         if (!powRes.ok || !factorsRes.ok) {
