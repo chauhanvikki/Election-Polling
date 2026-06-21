@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useData } from '../context/DataContext';
-import RadarChartComponent from '../components/RadarChart';
-import SentimentChart from '../components/SentimentChart';
-import PowForecast from '../components/PowForecast';
-import ConstituencyOverview from '../components/ConstituencyOverview';
 import CandidateProfiles from '../components/CandidateProfiles';
+
+const RadarChartComponent = lazy(() => import('../components/RadarChart'));
+const SentimentChart = lazy(() => import('../components/SentimentChart'));
+const PowForecast = lazy(() => import('../components/PowForecast'));
+const ConstituencyOverview = lazy(() => import('../components/ConstituencyOverview'));
 
 const Overview = () => {
   const { data, factors, stats, selectedCandidate, setSelectedCandidate } = useData();
@@ -51,7 +52,9 @@ const Overview = () => {
               </h2>
               <span className="section-badge">Radar View</span>
             </div>
-            <RadarChartComponent data={data} factors={factors} />
+            <Suspense fallback={<div style={{ minHeight: '280px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading chart...</div>}>
+              <RadarChartComponent data={data} factors={factors} />
+            </Suspense>
           </div>
 
           <div className="glass-panel mt-4">
@@ -62,7 +65,9 @@ const Overview = () => {
               </h2>
               <span className="section-badge">OSINT Feed</span>
             </div>
-            <SentimentChart data={data} />
+            <Suspense fallback={<div style={{ minHeight: '220px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading sentiment chart...</div>}>
+              <SentimentChart data={data} />
+            </Suspense>
           </div>
         </div>
 
@@ -74,7 +79,9 @@ const Overview = () => {
                 Constituency Profile
               </h2>
             </div>
-            <ConstituencyOverview />
+            <Suspense fallback={<div style={{ minHeight: '240px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading profile...</div>}>
+              <ConstituencyOverview />
+            </Suspense>
           </div>
 
           <div className="glass-panel mt-4">
@@ -84,7 +91,9 @@ const Overview = () => {
                 PoW Forecast
               </h2>
             </div>
-            <PowForecast data={data} />
+            <Suspense fallback={<div style={{ minHeight: '180px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading forecast...</div>}>
+              <PowForecast data={data} />
+            </Suspense>
           </div>
         </div>
       </div>

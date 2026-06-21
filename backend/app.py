@@ -13,7 +13,7 @@ app = Flask(__name__)
 CORS(app)
 
 # MongoDB Connection
-MONGO_URI = "mongodb+srv://singhvikki870_db_user:5PQ0L9doOAjyRnfX@cluster0.aqkonu7.mongodb.net/"
+MONGO_URI = os.environ.get("MONGO_URI", "mongodb+srv://singhvikki870_db_user:5PQ0L9doOAjyRnfX@cluster0.aqkonu7.mongodb.net/")
 client = MongoClient(MONGO_URI, tlsAllowInvalidCertificates=True)
 db = client['political_matrix_db']
 
